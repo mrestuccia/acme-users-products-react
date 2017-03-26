@@ -28,7 +28,9 @@ router.delete('/products/:id', (req, res, next) => {
 router.post('/products', (req, res, next) => {
   const name = req.body.name;
   Product.create({ name: name })
-    .then(() => res.send(200));
+    .then((product) => {
+      res.send(product);
+    });
 });
 
 

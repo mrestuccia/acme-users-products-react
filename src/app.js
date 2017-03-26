@@ -21,6 +21,7 @@ class App extends Component {
     // Context binding
     this.onClick = this.onClick.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onProductSave = this.onProductSave.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,18 @@ class App extends Component {
         this.setState({ products: products.data, users: users.data });
       });
 
+  }
+
+  onProductSave(name) {
+    axios.post('/api/products', { name: name })
+      .then((response) => {
+        return response.data;
+      })
+      .then((product) => {
+        const products = this.state.products;
+        products.push(product);
+        this.setState({ products: products });
+      });
   }
 
   onClick(view) {
@@ -54,17 +67,17 @@ class App extends Component {
     if (this.state.view === 'Product') {
       view = (<div>
         <h1>Products</h1>
-        <ProductForm />
-        <ProductList products={ this.state.products } onDelete={ this.onDelete } />
+        <ProductForm onProductSave = { this.onProductSave } />
+        <ProductList products={this.state.products} onDelete={this.onDelete} />
       </div>
       );
     } else {
-      view = <UserList users={ this.state.users } />;
+      view = <UserList users={this.state.users} />;
     }
 
     return (
       <div className="container">
-        <Nav view={ this.state.view } users={ this.state.users } products={ this.state.products } onClick={ this.onClick } />
+        <Nav view={this.state.view} users={this.state.users} products={this.state.products} onClick={this.onClick} />
         {view}
       </div>
     );
