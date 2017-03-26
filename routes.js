@@ -18,7 +18,7 @@ router.get('/users', (req, res, next) => {
 });
 
 // DELETE /api/products/:id
-router.get('/products/:id', (req, res, next) => {
+router.delete('/products/:id', (req, res, next) => {
   const id = req.params.id;
   Product.destroy({ where: { id: id } })
     .then(() => res.send(200));

@@ -10,7 +10,7 @@ const sync = () => {
 
 // Seed the DB
 const seed = () => {
-  return conn.sync()
+  return sync()
     .then(() => {
       return Promise.all([
         User.create({ name: 'curly' }),
