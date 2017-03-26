@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Nav from './nav';
 import UserList from './userlist';
-import ProductForm from './productForm';
+import ProductForm from './productform';
 import ProductList from './productlist';
 
 const root = document.getElementById('root');
