@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const routes = require('./routes');
+const db = require('./db');
 
 
 
@@ -20,4 +21,6 @@ app.use('/api', routes);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`server listening on ${port}`));
- 
+
+db.seed()
+  .then(() => console.log(`DB seeded`))
