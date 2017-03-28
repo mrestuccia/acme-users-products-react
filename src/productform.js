@@ -14,7 +14,8 @@ class ProductForm extends Component {
     this.setState({ name: ev.target.value });
   }
 
-  onButtonClick(){
+  onButtonClick(ev){
+    ev.preventDefault(); //prevent default
     this.onProductSave(this.state.name); // call the parent function
     this.setState({ name: '' });
   }
