@@ -27,7 +27,7 @@ class ProductForm extends Component {
           <label>Name</label>
           <input className="form-control" value={this.state.name} onChange={ this.onNameChange } />
         </div>
-        <button className="btn btn-primary" onClick={() => this.onButtonClick() }>Save</button>
+        <button className="btn btn-primary" onClick={this.onButtonClick }>Save</button>
       </form>
     );
   }
